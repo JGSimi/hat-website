@@ -228,8 +228,6 @@ export default function App() {
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-500 font-mono">
                 <span>Versão {releases.tag_name}</span>
                 <span>•</span>
-                <span>7 dias de teste grátis</span>
-                <span>•</span>
                 <span>Atualização automática via Minisign</span>
               </div>
             </div>
@@ -384,7 +382,7 @@ export default function App() {
             </div>
 
             <div className="flex items-baseline space-x-2">
-              <span className="text-5xl font-extrabold tracking-tight text-white">R$ 50</span>
+              <span className="text-5xl font-extrabold tracking-tight text-white">R$ 30</span>
               <span className="text-neutral-400 text-sm">/ mês</span>
             </div>
 
@@ -401,10 +399,6 @@ export default function App() {
                 <Check className="h-4 w-4 text-emerald-400" />
                 <span>IA Juiz para resolução de gabarito e consenso</span>
               </li>
-              <li className="flex items-center space-x-2">
-                <Check className="h-4 w-4 text-emerald-400" />
-                <span>7 dias de teste grátis (sem necessidade de cartão)</span>
-              </li>
             </ul>
 
             <div className="pt-2">
@@ -412,7 +406,7 @@ export default function App() {
                 href={primaryDownload.url}
                 className="inline-flex items-center space-x-2 bg-white text-black font-semibold px-6 py-3 hover:bg-neutral-200 transition-colors text-sm"
               >
-                <span>Iniciar Teste Grátis de 7 Dias</span>
+                <span>Baixar o Hat</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
