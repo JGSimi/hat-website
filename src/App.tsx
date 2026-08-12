@@ -146,9 +146,6 @@ export default function App() {
               <HatLogo size={32} className="text-[#EDF2F4]" title="Hat" />
               <span className="text-xl font-bold tracking-tight text-[#EDF2F4] font-mono">Hat</span>
             </a>
-            <span className="bg-neutral-900/80 px-2.5 py-1 text-[10px] font-mono text-neutral-400 rounded-full">
-              IA NATIVA & PRIVADA
-            </span>
           </div>
           
           <nav className="flex items-center space-x-6 text-sm text-neutral-400">
