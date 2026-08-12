@@ -15,7 +15,9 @@ import {
   ArrowRight,
   MousePointerClick,
   Camera,
-  ClipboardCheck
+  ClipboardCheck,
+  X,
+  HelpCircle
 } from 'lucide-react';
 
 interface ReleaseInfo {
@@ -40,6 +42,7 @@ export default function App() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [releases, setReleases] = useState<ReleaseInfo>(DEFAULT_RELEASES);
   const [activeTab, setActiveTab] = useState<'macos' | 'windows'>('macos');
+  const [downloadModalOpen, setDownloadModalOpen] = useState(false);
 
   useEffect(() => {
     // OS Detection
@@ -94,26 +97,58 @@ export default function App() {
     setTimeout(() => setCopiedCmd(false), 2000);
   };
 
+  const handleDownloadClick = (url: string, forceOS?: 'macos' | 'windows') => {
+    if (forceOS) {
+      setActiveTab(forceOS);
+    } else if (userOS === 'win') {
+      setActiveTab('windows');
+    } else {
+      setActiveTab('macos');
+    }
+
+    // Trigger download
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = '';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Open guidance popup
+    setDownloadModalOpen(true);
+  };
+
+  const scrollToTutorial = () => {
+    setDownloadModalOpen(false);
+    const element = document.getElementById('instalacao');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const getPrimaryDownload = () => {
     switch (userOS) {
       case 'win':
         return {
           label: 'Baixar para Windows (64-bit)',
           sub: `.exe • ${releases.tag_name}`,
-          url: releases.winUrl
+          url: releases.winUrl,
+          os: 'windows' as const
         };
       case 'mac-intel':
         return {
           label: 'Baixar para macOS (Intel)',
           sub: `.dmg • ${releases.tag_name}`,
-          url: releases.macIntelUrl
+          url: releases.macIntelUrl,
+          os: 'macos' as const
         };
       case 'mac-arm':
       default:
         return {
           label: 'Baixar para macOS (Apple Silicon M1+)',
           sub: `.dmg • ${releases.tag_name}`,
-          url: releases.macArmUrl
+          url: releases.macArmUrl,
+          os: 'macos' as const
         };
     }
   };
@@ -153,13 +188,13 @@ export default function App() {
             <a href="#recursos" className="hover:text-[#EDF2F4] transition-colors">Recursos</a>
             <a href="#instalacao" className="hover:text-[#EDF2F4] transition-colors">Instalação</a>
             <a href="#precos" className="hover:text-[#EDF2F4] transition-colors">Planos</a>
-            <a 
-              href={primaryDownload.url}
+            <button 
+              onClick={() => handleDownloadClick(primaryDownload.url, primaryDownload.os)}
               className="inline-flex items-center space-x-1.5 font-medium text-neutral-900 bg-[#EDF2F4] hover:bg-white px-4 py-2 rounded-full transition-all text-xs shadow-sm hover:scale-[1.02]"
             >
               <Download className="h-3.5 w-3.5" />
               <span>Download</span>
-            </a>
+            </button>
           </nav>
         </header>
 
@@ -183,13 +218,13 @@ export default function App() {
               {/* DOWNLOAD ACTION BOX */}
               <div className="pt-4 space-y-4">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                  <a
-                    href={primaryDownload.url}
+                  <button
+                    onClick={() => handleDownloadClick(primaryDownload.url, primaryDownload.os)}
                     className="inline-flex items-center justify-center space-x-2 bg-[#EDF2F4] text-neutral-950 font-semibold px-7 py-4 rounded-full hover:bg-white transition-all text-sm shadow-md hover:scale-[1.01]"
                   >
                     <Download className="h-4 w-4" />
                     <span>{primaryDownload.label}</span>
-                  </a>
+                  </button>
 
                   {/* Platform Selector Dropdown */}
                   <div className="relative">
@@ -203,30 +238,36 @@ export default function App() {
 
                     {dropdownOpen && (
                       <div className="absolute right-0 top-full mt-2 w-64 bg-neutral-900/95 backdrop-blur-xl p-2.5 z-50 text-xs shadow-2xl rounded-2xl">
-                        <a
-                          href={releases.macArmUrl}
-                          className="block px-3 py-2.5 text-neutral-300 hover:bg-neutral-800 rounded-xl hover:text-white transition-colors"
-                          onClick={() => setDropdownOpen(false)}
+                        <button
+                          onClick={() => {
+                            setDropdownOpen(false);
+                            handleDownloadClick(releases.macArmUrl, 'macos');
+                          }}
+                          className="w-full text-left block px-3 py-2.5 text-neutral-300 hover:bg-neutral-800 rounded-xl hover:text-white transition-colors"
                         >
                           <div className="font-medium">macOS Apple Silicon (M1+)</div>
                           <div className="text-[10px] text-neutral-500 font-mono">Hat_aarch64.dmg</div>
-                        </a>
-                        <a
-                          href={releases.macIntelUrl}
-                          className="block px-3 py-2.5 text-neutral-300 hover:bg-neutral-800 rounded-xl hover:text-white transition-colors"
-                          onClick={() => setDropdownOpen(false)}
+                        </button>
+                        <button
+                          onClick={() => {
+                            setDropdownOpen(false);
+                            handleDownloadClick(releases.macIntelUrl, 'macos');
+                          }}
+                          className="w-full text-left block px-3 py-2.5 text-neutral-300 hover:bg-neutral-800 rounded-xl hover:text-white transition-colors"
                         >
                           <div className="font-medium">macOS Intel</div>
                           <div className="text-[10px] text-neutral-500 font-mono">Hat_x64.dmg</div>
-                        </a>
-                        <a
-                          href={releases.winUrl}
-                          className="block px-3 py-2.5 text-neutral-300 hover:bg-neutral-800 rounded-xl hover:text-white transition-colors mt-1"
-                          onClick={() => setDropdownOpen(false)}
+                        </button>
+                        <button
+                          onClick={() => {
+                            setDropdownOpen(false);
+                            handleDownloadClick(releases.winUrl, 'windows');
+                          }}
+                          className="w-full text-left block px-3 py-2.5 text-neutral-300 hover:bg-neutral-800 rounded-xl hover:text-white transition-colors mt-1"
                         >
                           <div className="font-medium">Windows 64-bit</div>
                           <div className="text-[10px] text-neutral-500 font-mono">Hat_x64-setup.exe</div>
-                        </a>
+                        </button>
                       </div>
                     )}
                   </div>
@@ -446,17 +487,51 @@ export default function App() {
               </ul>
 
               <div className="pt-3">
-                <a
-                  href={primaryDownload.url}
+                <button
+                  onClick={() => handleDownloadClick(primaryDownload.url, primaryDownload.os)}
                   className="inline-flex items-center space-x-2 bg-[#EDF2F4] text-neutral-950 font-semibold px-8 py-3.5 rounded-full hover:bg-white transition-all text-sm shadow-md hover:scale-[1.01]"
                 >
                   <span>Baixar o Hat</span>
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </button>
               </div>
             </div>
           </section>
         </main>
+
+        {/* DOWNLOAD GUIDANCE MODAL */}
+        {downloadModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+            <div className="relative w-full max-w-md bg-neutral-900 border border-neutral-800 p-7 rounded-3xl shadow-2xl space-y-5">
+              <button
+                onClick={() => setDownloadModalOpen(false)}
+                className="absolute top-5 right-5 text-neutral-400 hover:text-white p-1 rounded-full hover:bg-neutral-800 transition-colors"
+                aria-label="Fechar"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="flex items-center space-x-3 text-emerald-400">
+                <Download className="h-6 w-6" />
+                <span className="font-semibold text-lg text-white">Download Iniciado!</span>
+              </div>
+
+              <p className="text-sm text-neutral-300 font-light leading-relaxed">
+                Se tiver qualquer dificuldade para instalar ou executar o aplicativo no seu sistema:
+              </p>
+
+              <div className="pt-2">
+                <button
+                  onClick={scrollToTutorial}
+                  className="w-full inline-flex items-center justify-center space-x-2 bg-[#EDF2F4] text-neutral-950 font-semibold px-6 py-3.5 rounded-full hover:bg-white transition-all text-sm shadow-md"
+                >
+                  <HelpCircle className="h-4 w-4" />
+                  <span>Se tiver dificuldade para instalar, clique aqui ({activeTab === 'macos' ? 'macOS' : 'Windows'})</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* FOOTER */}
         <footer className="mx-auto max-w-5xl px-6 py-12 text-xs text-neutral-500 flex flex-col md:flex-row items-center justify-between gap-4">
