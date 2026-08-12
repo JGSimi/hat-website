@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { InteractiveBackground } from './components/InteractiveBackground';
 import { 
   Download, 
   Terminal, 
@@ -117,9 +118,13 @@ export default function App() {
   const primaryDownload = getPrimaryDownload();
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-neutral-800 selection:text-white">
-      {/* Top Notification Bar */}
-      <div className="border-b border-neutral-900 bg-neutral-950/80 px-4 py-2 text-center text-xs text-neutral-400 backdrop-blur-md">
+    <div className="relative min-h-screen bg-neutral-950 text-neutral-100 selection:bg-neutral-800 selection:text-white overflow-hidden">
+      {/* Interactive Background Canvas */}
+      <InteractiveBackground />
+
+      <div className="relative z-10">
+        {/* Top Notification Bar */}
+        <div className="border-b border-neutral-900 bg-neutral-950/70 px-4 py-2 text-center text-xs text-neutral-400 backdrop-blur-md">
         <span>Hat {releases.tag_name} • Assistente de IA Stealth para macOS & Windows</span>
         <a 
           href={releases.latestReleasePage} 
@@ -431,6 +436,7 @@ export default function App() {
           </a>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
