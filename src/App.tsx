@@ -13,7 +13,8 @@ import {
   ExternalLink,
   ArrowRight,
   MousePointerClick,
-  Clock
+  Camera,
+  ClipboardCheck
 } from 'lucide-react';
 
 interface ReleaseInfo {
@@ -148,7 +149,7 @@ export default function App() {
           
           <nav className="flex items-center space-x-6 text-sm text-neutral-400">
             <a href="#como-funciona" className="hover:text-[#EDF2F4] transition-colors">Como funciona</a>
-            <a href="#diferenciais" className="hover:text-[#EDF2F4] transition-colors">Diferenciais</a>
+            <a href="#recursos" className="hover:text-[#EDF2F4] transition-colors">Recursos</a>
             <a href="#instalacao" className="hover:text-[#EDF2F4] transition-colors">Instalação</a>
             <a href="#precos" className="hover:text-[#EDF2F4] transition-colors">Planos</a>
             <a 
@@ -167,15 +168,15 @@ export default function App() {
             <div className="max-w-3xl space-y-6">
               <div className="inline-flex items-center space-x-2 bg-neutral-900/80 px-3.5 py-1.5 rounded-full text-xs text-neutral-300 font-mono">
                 <Sparkles className="h-3.5 w-3.5 text-neutral-400" />
-                <span>Privacidade • Praticidade • Velocidade</span>
+                <span>IA Útil de Verdade • Sem Abrir Abas</span>
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#EDF2F4] leading-tight">
-                Seu assistente de IA instantâneo, privado e sempre à mão.
+                Usar IA nunca foi tão fácil e rápido.
               </h1>
 
               <p className="text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
-                O Hat roda nativamente na sua barra de menus (macOS) ou bandeja do sistema (Windows). Copie qualquer texto, acione o atalho e receba respostas imediatas em um pop-up ultrarrápido — sem alternar de aplicativo ou abrir o navegador.
+                Toda vez você precisava abrir uma nova aba para pesquisar algo no ChatGPT. Com o Hat, é só copiar, pressionar um atalho e pronto: a IA te responde rápido no canto da tela de maneira privada. Isso é IA útil de verdade.
               </p>
 
               {/* DOWNLOAD ACTION BOX */}
@@ -237,36 +238,46 @@ export default function App() {
             </div>
           </section>
 
-          {/* PILLARS SECTION (PRIVACY, PRACTICALITY, SPEED) */}
-          <section id="diferenciais" className="py-16">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-neutral-900/40 p-7 rounded-3xl space-y-3">
+          {/* KEY VALUE HIGHLIGHTS */}
+          <section id="recursos" className="py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-neutral-900/40 p-8 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
-                  <ShieldCheck className="h-5 w-5 text-emerald-400" />
-                  <span className="text-lg">Privacidade Total</span>
+                  <ClipboardCheck className="h-5 w-5 text-emerald-400" />
+                  <span className="text-xl">Resposta Direta no seu Ctrl + V</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Sem abas abertas no navegador nem extensões lendo seus dados. O Hat é um utilitário nativo de desktop focado em manter suas consultas privadas.
+                  A IA responde no canto da tela e a resposta fica automaticamente salva na sua área de transferência. Chegou, copiou, colou onde precisar.
                 </p>
               </div>
 
-              <div className="bg-neutral-900/40 p-7 rounded-3xl space-y-3">
+              <div className="bg-neutral-900/40 p-8 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
-                  <Clock className="h-5 w-5 text-blue-400" />
-                  <span className="text-lg">Praticidade Absoluta</span>
+                  <Camera className="h-5 w-5 text-blue-400" />
+                  <span className="text-xl">Entende Prints de Tela</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Disponível instantaneamente via atalho global de teclado. Sem trocar de aplicativo ou interromper seu raciocínio.
+                  Não é só texto. Tire um print da tela ou copie uma imagem e acione o atalho: a IA analisa o contexto visual e te dá a resposta exata.
                 </p>
               </div>
 
-              <div className="bg-neutral-900/40 p-7 rounded-3xl space-y-3">
+              <div className="bg-neutral-900/40 p-8 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
                   <Zap className="h-5 w-5 text-amber-400" />
-                  <span className="text-lg">Velocidade Extrema</span>
+                  <span className="text-xl">Zero Troca de Abas</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Respostas em milissegundos direto no ponto de foco da sua tela em uma janela flutuante ultraleve e responsiva.
+                  Chega de abrir o navegador a todo momento. O Hat fica silencioso na sua barra de menus e responde instantaneamente sem quebrar seu foco.
+                </p>
+              </div>
+
+              <div className="bg-neutral-900/40 p-8 rounded-3xl space-y-3">
+                <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
+                  <ShieldCheck className="h-5 w-5 text-indigo-400" />
+                  <span className="text-xl">Privacidade Nativa de Desktop</span>
+                </div>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed">
+                  Sem histórico público em abas abertas de navegadores nem extensões invasivas. Suas consultas são privadas e discretas.
                 </p>
               </div>
             </div>
@@ -275,38 +286,38 @@ export default function App() {
           {/* HOW IT WORKS */}
           <section id="como-funciona" className="py-20">
             <div className="mb-12">
-              <h2 className="text-2xl font-bold tracking-tight text-[#EDF2F4] mb-2">Praticidade Sem Interrupções</h2>
-              <p className="text-sm text-neutral-400">Três passos para consultar a IA em milissegundos sem perder o foco no seu trabalho.</p>
+              <h2 className="text-2xl font-bold tracking-tight text-[#EDF2F4] mb-2">Simples Assim</h2>
+              <p className="text-sm text-neutral-400">Três passos para resolver qualquer dúvida em milissegundos.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-neutral-900/30 p-6 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-2 text-[#EDF2F4] font-semibold">
                   <MousePointerClick className="h-4 w-4 text-neutral-400" />
-                  <span>1. Copie o Texto</span>
+                  <span>1. Copie o Texto ou Print</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Selecione o trecho, trecho de código ou dúvida que deseja consultar (<kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + C</kbd>).
+                  Selecione qualquer pergunta ou tire um print da tela (<kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + C</kbd>).
                 </p>
               </div>
 
               <div className="bg-neutral-900/30 p-6 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-2 text-[#EDF2F4] font-semibold">
                   <Zap className="h-4 w-4 text-neutral-400" />
-                  <span>2. Acione o Atalho</span>
+                  <span>2. Pressione o Atalho</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Pressione <kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + Shift + F</kbd> de qualquer aplicativo ou documento.
+                  Aperte <kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + Shift + F</kbd> de qualquer aplicativo ou documento.
                 </p>
               </div>
 
               <div className="bg-neutral-900/30 p-6 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-2 text-[#EDF2F4] font-semibold">
-                  <ShieldCheck className="h-4 w-4 text-neutral-400" />
-                  <span>3. Resposta Instantânea e Privada</span>
+                  <ClipboardCheck className="h-4 w-4 text-emerald-400" />
+                  <span>3. Prontinho no seu Ctrl + V</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  A IA analisa o conteúdo e exibe a resposta em uma janela flutuante e minimalista, mantendo total privacidade.
+                  A IA responde no canto da tela e a resposta já fica salva na área de transferência para você colar onde quiser.
                 </p>
               </div>
             </div>
@@ -421,15 +432,15 @@ export default function App() {
                 </li>
                 <li className="flex items-center space-x-2.5">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  <span>Respostas em janela flutuante instantânea e privada</span>
+                  <span>Resposta direta salva no seu Ctrl + V</span>
+                </li>
+                <li className="flex items-center space-x-2.5">
+                  <Check className="h-4 w-4 text-emerald-400" />
+                  <span>Suporte completo a prints de tela e imagens</span>
                 </li>
                 <li className="flex items-center space-x-2.5">
                   <Check className="h-4 w-4 text-emerald-400" />
                   <span>Suporte nativo a macOS (Apple Silicon & Intel) e Windows</span>
-                </li>
-                <li className="flex items-center space-x-2.5">
-                  <Check className="h-4 w-4 text-emerald-400" />
-                  <span>Atualizações contínuas de desempenho inclusas</span>
                 </li>
               </ul>
 
