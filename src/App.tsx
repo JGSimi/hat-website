@@ -156,7 +156,16 @@ export default function App() {
   const primaryDownload = getPrimaryDownload();
 
   return (
-    <div className="relative min-h-screen bg-[#121214] text-[#EDF2F4] selection:bg-neutral-800 selection:text-white overflow-hidden">
+    <div className="relative min-h-screen bg-[#121214] text-[#EDF2F4] selection:bg-neutral-800 selection:text-white overflow-x-hidden">
+      {/* High Quality Responsive WebP Wallpaper */}
+      <div 
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none scale-105 transform transition-transform duration-1000"
+        style={{ backgroundImage: `url('./wallpaper.webp')` }}
+      />
+      
+      {/* Dark overlay for optimal text contrast & legibility */}
+      <div className="fixed inset-0 z-0 bg-[#121214]/75 backdrop-blur-[2px] pointer-events-none" />
+
       {/* Interactive Background Canvas */}
       <InteractiveBackground />
 
