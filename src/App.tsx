@@ -6,13 +6,12 @@ import {
   Check, 
   ShieldAlert, 
   Zap, 
-  Users, 
   EyeOff, 
-  Keyboard, 
   Sparkles, 
   ChevronDown,
   ExternalLink,
-  ArrowRight
+  ArrowRight,
+  MousePointerClick
 } from 'lucide-react';
 
 interface ReleaseInfo {
@@ -42,8 +41,7 @@ export default function App() {
     // OS Detection
     const ua = navigator.userAgent.toLowerCase();
     if (ua.includes('mac')) {
-      // Check arm vs intel if webgl renderer available or userAgent
-      setUserOS('mac-arm'); // default mac to arm, allow selection
+      setUserOS('mac-arm');
       setActiveTab('macos');
     } else if (ua.includes('win')) {
       setUserOS('win');
@@ -122,14 +120,14 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100 selection:bg-neutral-800 selection:text-white">
       {/* Top Notification Bar */}
       <div className="border-b border-neutral-900 bg-neutral-950/80 px-4 py-2 text-center text-xs text-neutral-400 backdrop-blur-md">
-        <span>Hat v2.0 disponível • Salas + Flash para macOS & Windows</span>
+        <span>Hat {releases.tag_name} • Assistente de IA Stealth para macOS & Windows</span>
         <a 
           href={releases.latestReleasePage} 
           target="_blank" 
           rel="noopener noreferrer"
           className="ml-2 font-medium text-neutral-200 underline underline-offset-4 hover:text-white"
         >
-          Ver notas da versão ({releases.tag_name})
+          Ver notas da versão
         </a>
       </div>
 
@@ -162,18 +160,18 @@ export default function App() {
           <div className="max-w-3xl space-y-6">
             <div className="inline-flex items-center space-x-2 border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-xs text-neutral-300 font-mono">
               <Sparkles className="h-3.5 w-3.5 text-neutral-400" />
-              <span>Modo Salas + Flash Integrado</span>
+              <span>Nativo • Discreto • Resposta Instantânea</span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-none">
-              Assistente de IA stealth para provas em grupo.
+              Assistente de IA stealth para provas e questionários.
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
-              O Hat roda discretamente na sua barra de menus. Copie uma questão com atalho, visualize a resposta no Flash e conecte-se em salas onde a IA agrupa respostas, descobre o gabarito correto e avisa quem errou.
+              O Hat roda discretamente na sua barra de menus (macOS) ou bandeja do sistema (Windows). Copie qualquer questão, acione um atalho e veja a resposta surgir instantaneamente em uma janela pop-up discreta (Modo Flash).
             </p>
 
-            {/* DOWNLOAD ACTION BOX (No cards, simple bordered controls) */}
+            {/* DOWNLOAD ACTION BOX */}
             <div className="pt-4 space-y-4">
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <a
@@ -234,62 +232,52 @@ export default function App() {
           </div>
         </section>
 
-        {/* HOW IT WORKS (Typographic grid without cards) */}
+        {/* HOW IT WORKS */}
         <section id="como-funciona" className="py-16 border-b border-neutral-900">
           <div className="mb-12">
-            <h2 className="text-2xl font-bold tracking-tight text-white mb-2">Como o Hat Funciona</h2>
-            <p className="text-sm text-neutral-400">Desenvolvido especificamente para fluidez, velocidade e discrição em grupo.</p>
+            <h2 className="text-2xl font-bold tracking-tight text-white mb-2">Como Funciona</h2>
+            <p className="text-sm text-neutral-400">Três passos simples para consultar a IA em segundos sem sair da sua tela.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="border-l-2 border-neutral-800 pl-6 space-y-2">
               <div className="flex items-center space-x-2 text-white font-semibold">
-                <Users className="h-4 w-4 text-neutral-400" />
-                <span>1. Entre ou Crie uma Sala</span>
+                <MousePointerClick className="h-4 w-4 text-neutral-400" />
+                <span>1. Copie a Questão</span>
               </div>
               <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                Abra o app, entre na sala do seu grupo ou crie uma nova e compartilhe o código de acesso instantâneo.
-              </p>
-            </div>
-
-            <div className="border-l-2 border-neutral-800 pl-6 space-y-2">
-              <div className="flex items-center space-x-2 text-white font-semibold">
-                <EyeOff className="h-4 w-4 text-neutral-400" />
-                <span>2. Copie a Questão + Flash</span>
-              </div>
-              <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                Pressione <kbd className="px-1.5 py-0.5 border border-neutral-800 bg-neutral-900 text-xs font-mono text-neutral-200">Cmd+Shift+F</kbd>. O Flash exibe a resposta da IA discretamente no canto da sua tela e envia a entry para a sala.
+                Selecione e copie o texto da pergunta ou alternativa para a sua área de transferência (<kbd className="px-1.5 py-0.5 border border-neutral-800 bg-neutral-900 text-xs font-mono text-neutral-200">Cmd/Ctrl + C</kbd>).
               </p>
             </div>
 
             <div className="border-l-2 border-neutral-800 pl-6 space-y-2">
               <div className="flex items-center space-x-2 text-white font-semibold">
                 <Zap className="h-4 w-4 text-neutral-400" />
-                <span>3. Consenso & IA Juiz</span>
+                <span>2. Acione o Atalho</span>
               </div>
               <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                A IA da sala agrupa perguntas idênticas entre os participantes, apura a maioria e calcula de forma autônoma a alternativa exata.
+                Pressione <kbd className="px-1.5 py-0.5 border border-neutral-800 bg-neutral-900 text-xs font-mono text-neutral-200">Cmd/Ctrl + Shift + F</kbd> de qualquer janela ou aplicativo.
               </p>
             </div>
 
             <div className="border-l-2 border-neutral-800 pl-6 space-y-2">
               <div className="flex items-center space-x-2 text-white font-semibold">
-                <Keyboard className="h-4 w-4 text-neutral-400" />
-                <span>4. Alertas de Correção</span>
+                <EyeOff className="h-4 w-4 text-neutral-400" />
+                <span>3. Resposta Discreta (Flash)</span>
               </div>
               <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                Se você divergir da resposta correta apurada pela sala, um badge discreto acumula a correção. Aperte <kbd className="px-1.5 py-0.5 border border-neutral-800 bg-neutral-900 text-xs font-mono text-neutral-200">Cmd+Shift+D</kbd> para conferir.
+                A IA analisa a questão e exibe a resposta conclusiva em um pop-up minimalista no canto da tela, sem abrir navegadores.
               </p>
             </div>
           </div>
         </section>
 
-        {/* INSTALLATION & QUARANTINE GUIDANCE */}
+        {/* INSTALLATION GUIDANCE */}
         <section id="instalacao" className="py-16 border-b border-neutral-900">
           <div className="mb-8">
             <h2 className="text-2xl font-bold tracking-tight text-white mb-2">Instalação e Primeiro Uso</h2>
             <p className="text-sm text-neutral-400">
-              O Hat não possui certificado pago corporativo Apple/Microsoft (app não assinado), por isso o sistema operacional pode exigir uma permissão simples na primeira execução.
+              O Hat não possui certificado pago corporativo Apple/Microsoft (app não assinado), por isso o sistema operacional pode exigir uma liberação simples no primeiro início.
             </p>
           </div>
 
@@ -323,11 +311,11 @@ export default function App() {
                 <li>Baixe e abra o arquivo <code className="font-mono text-xs bg-neutral-900 px-1.5 py-0.5 border border-neutral-800">.dmg</code>.</li>
                 <li>Arraste o aplicativo **Hat** para a pasta **Aplicativos**.</li>
                 <li>
-                  Devido à quarentena do macOS para apps sem notarização paga, execute o comando abaixo **uma única vez** no Terminal:
+                  Execute o comando abaixo **uma única vez** no Terminal para remover a quarentena do macOS:
                 </li>
               </ol>
 
-              {/* Terminal Code Snippet (Clean mono box) */}
+              {/* Terminal Code Snippet */}
               <div className="border border-neutral-800 bg-neutral-950 p-4 font-mono text-xs text-neutral-200 flex items-center justify-between">
                 <div className="flex items-center space-x-3 overflow-x-auto">
                   <Terminal className="h-4 w-4 text-neutral-500 flex-shrink-0" />
@@ -354,7 +342,7 @@ export default function App() {
               <div className="text-xs text-neutral-500 bg-neutral-900/40 p-4 border-l-2 border-neutral-700">
                 <ShieldAlert className="h-4 w-4 text-neutral-400 inline mr-2" />
                 <span>
-                  <strong>Por que este passo é necessário?</strong> Ao baixar um app fora da App Store, o macOS atribui a flag de quarentena. O comando acima remove a restrição local sem comprometer seu sistema.
+                  <strong>Por que este passo é necessário?</strong> Ao baixar um app fora da App Store, o macOS bloqueia a execução até a quarentena ser removida via Terminal.
                 </span>
               </div>
             </div>
@@ -378,7 +366,7 @@ export default function App() {
           <div className="max-w-xl space-y-6">
             <div>
               <span className="text-xs font-mono uppercase text-neutral-500 tracking-wider">Plano Único</span>
-              <h2 className="text-3xl font-bold tracking-tight text-white mt-1">Simples, ilimitado e transparente.</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-white mt-1">Acesso Ilimitado</h2>
             </div>
 
             <div className="flex items-baseline space-x-2">
@@ -389,15 +377,19 @@ export default function App() {
             <ul className="space-y-2 text-sm text-neutral-300 font-light">
               <li className="flex items-center space-x-2">
                 <Check className="h-4 w-4 text-emerald-400" />
-                <span>Salas em grupo ilimitadas</span>
+                <span>Consultas via IA sem limite de uso</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Check className="h-4 w-4 text-emerald-400" />
-                <span>Flash de consulta stealth sem restrições</span>
+                <span>Exibição discreta em pop-up (Flash)</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Check className="h-4 w-4 text-emerald-400" />
-                <span>IA Juiz para resolução de gabarito e consenso</span>
+                <span>Suporte a macOS (Apple Silicon & Intel) e Windows</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Check className="h-4 w-4 text-emerald-400" />
+                <span>Atualizações automáticas inclusas</span>
               </li>
             </ul>
 
