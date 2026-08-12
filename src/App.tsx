@@ -225,8 +225,6 @@ export default function App() {
 
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-500 font-mono">
                 <span>Versão {releases.tag_name}</span>
-                <span>•</span>
-                <span>Atualização automática via Minisign</span>
               </div>
             </div>
           </div>
