@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { InteractiveBackground } from './components/InteractiveBackground';
+import { HatLogo } from './components/HatLogo';
 import { 
   Download, 
   Terminal, 
@@ -141,7 +142,10 @@ export default function App() {
         {/* Main Navigation */}
         <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-8">
           <div className="flex items-center space-x-3">
-            <span className="text-xl font-bold tracking-tight text-[#EDF2F4] font-mono">Hat</span>
+            <a href="/" aria-label="Hat Home" className="flex items-center space-x-2.5 hover:opacity-80 transition-opacity">
+              <HatLogo size={32} className="text-[#EDF2F4]" title="Hat" />
+              <span className="text-xl font-bold tracking-tight text-[#EDF2F4] font-mono">Hat</span>
+            </a>
             <span className="bg-neutral-900/80 px-2.5 py-1 text-[10px] font-mono text-neutral-400 rounded-full">
               IA NATIVA & PRIVADA
             </span>
