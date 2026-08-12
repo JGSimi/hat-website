@@ -7,12 +7,13 @@ import {
   Check, 
   ShieldAlert, 
   Zap, 
-  EyeOff, 
+  ShieldCheck, 
   Sparkles, 
   ChevronDown,
   ExternalLink,
   ArrowRight,
-  MousePointerClick
+  MousePointerClick,
+  Clock
 } from 'lucide-react';
 
 interface ReleaseInfo {
@@ -125,7 +126,7 @@ export default function App() {
       <div className="relative z-10">
         {/* Top Notification Bar */}
         <div className="bg-neutral-900/40 px-4 py-2.5 text-center text-xs text-neutral-400 backdrop-blur-md">
-          <span>Hat {releases.tag_name} • Assistente de IA Stealth para macOS & Windows</span>
+          <span>Hat {releases.tag_name} • Assistente de IA Nativo para macOS & Windows</span>
           <a 
             href={releases.latestReleasePage} 
             target="_blank" 
@@ -141,12 +142,13 @@ export default function App() {
           <div className="flex items-center space-x-3">
             <span className="text-xl font-bold tracking-tight text-[#EDF2F4] font-mono">Hat</span>
             <span className="bg-neutral-900/80 px-2.5 py-1 text-[10px] font-mono text-neutral-400 rounded-full">
-              STEALTH IA
+              IA NATIVA & PRIVADA
             </span>
           </div>
           
           <nav className="flex items-center space-x-6 text-sm text-neutral-400">
             <a href="#como-funciona" className="hover:text-[#EDF2F4] transition-colors">Como funciona</a>
+            <a href="#diferenciais" className="hover:text-[#EDF2F4] transition-colors">Diferenciais</a>
             <a href="#instalacao" className="hover:text-[#EDF2F4] transition-colors">Instalação</a>
             <a href="#precos" className="hover:text-[#EDF2F4] transition-colors">Planos</a>
             <a 
@@ -165,15 +167,15 @@ export default function App() {
             <div className="max-w-3xl space-y-6">
               <div className="inline-flex items-center space-x-2 bg-neutral-900/80 px-3.5 py-1.5 rounded-full text-xs text-neutral-300 font-mono">
                 <Sparkles className="h-3.5 w-3.5 text-neutral-400" />
-                <span>Nativo • Discreto • Resposta Instantânea</span>
+                <span>Privacidade • Praticidade • Velocidade</span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#EDF2F4] leading-none">
-                Assistente de IA stealth para provas e questionários.
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[#EDF2F4] leading-tight">
+                Seu assistente de IA instantâneo, privado e sempre à mão.
               </h1>
 
               <p className="text-lg md:text-xl text-neutral-400 font-light leading-relaxed">
-                O Hat roda discretamente na sua barra de menus (macOS) ou bandeja do sistema (Windows). Copie qualquer questão, acione um atalho e veja a resposta surgir instantaneamente em uma janela pop-up discreta (Modo Flash).
+                O Hat roda nativamente na sua barra de menus (macOS) ou bandeja do sistema (Windows). Copie qualquer texto, acione o atalho e receba respostas imediatas em um pop-up ultrarrápido — sem alternar de aplicativo ou abrir o navegador.
               </p>
 
               {/* DOWNLOAD ACTION BOX */}
@@ -235,21 +237,56 @@ export default function App() {
             </div>
           </section>
 
+          {/* PILLARS SECTION (PRIVACY, PRACTICALITY, SPEED) */}
+          <section id="diferenciais" className="py-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-neutral-900/40 p-7 rounded-3xl space-y-3">
+                <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
+                  <ShieldCheck className="h-5 w-5 text-emerald-400" />
+                  <span className="text-lg">Privacidade Total</span>
+                </div>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed">
+                  Sem abas abertas no navegador nem extensões lendo seus dados. O Hat é um utilitário nativo de desktop focado em manter suas consultas privadas.
+                </p>
+              </div>
+
+              <div className="bg-neutral-900/40 p-7 rounded-3xl space-y-3">
+                <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
+                  <Clock className="h-5 w-5 text-blue-400" />
+                  <span className="text-lg">Praticidade Absoluta</span>
+                </div>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed">
+                  Disponível instantaneamente via atalho global de teclado. Sem trocar de aplicativo ou interromper seu raciocínio.
+                </p>
+              </div>
+
+              <div className="bg-neutral-900/40 p-7 rounded-3xl space-y-3">
+                <div className="flex items-center space-x-3 text-[#EDF2F4] font-semibold">
+                  <Zap className="h-5 w-5 text-amber-400" />
+                  <span className="text-lg">Velocidade Extrema</span>
+                </div>
+                <p className="text-sm text-neutral-400 font-light leading-relaxed">
+                  Respostas em milissegundos direto no ponto de foco da sua tela em uma janela flutuante ultraleve e responsiva.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* HOW IT WORKS */}
           <section id="como-funciona" className="py-20">
             <div className="mb-12">
-              <h2 className="text-2xl font-bold tracking-tight text-[#EDF2F4] mb-2">Como Funciona</h2>
-              <p className="text-sm text-neutral-400">Três passos simples para consultar a IA em segundos sem sair da sua tela.</p>
+              <h2 className="text-2xl font-bold tracking-tight text-[#EDF2F4] mb-2">Praticidade Sem Interrupções</h2>
+              <p className="text-sm text-neutral-400">Três passos para consultar a IA em milissegundos sem perder o foco no seu trabalho.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-neutral-900/30 p-6 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-2 text-[#EDF2F4] font-semibold">
                   <MousePointerClick className="h-4 w-4 text-neutral-400" />
-                  <span>1. Copie a Questão</span>
+                  <span>1. Copie o Texto</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Selecione e copie o texto da pergunta ou alternativa para a sua área de transferência (<kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + C</kbd>).
+                  Selecione o trecho, trecho de código ou dúvida que deseja consultar (<kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + C</kbd>).
                 </p>
               </div>
 
@@ -259,17 +296,17 @@ export default function App() {
                   <span>2. Acione o Atalho</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  Pressione <kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + Shift + F</kbd> de qualquer janela ou aplicativo.
+                  Pressione <kbd className="px-2 py-0.5 bg-neutral-800 rounded-md text-xs font-mono text-neutral-200">Cmd/Ctrl + Shift + F</kbd> de qualquer aplicativo ou documento.
                 </p>
               </div>
 
               <div className="bg-neutral-900/30 p-6 rounded-3xl space-y-3">
                 <div className="flex items-center space-x-2 text-[#EDF2F4] font-semibold">
-                  <EyeOff className="h-4 w-4 text-neutral-400" />
-                  <span>3. Resposta Discreta (Flash)</span>
+                  <ShieldCheck className="h-4 w-4 text-neutral-400" />
+                  <span>3. Resposta Instantânea e Privada</span>
                 </div>
                 <p className="text-sm text-neutral-400 font-light leading-relaxed">
-                  A IA analisa a questão e exibe a resposta conclusiva em um pop-up minimalista no canto da tela, sem abrir navegadores.
+                  A IA analisa o conteúdo e exibe a resposta em uma janela flutuante e minimalista, mantendo total privacidade.
                 </p>
               </div>
             </div>
@@ -280,7 +317,7 @@ export default function App() {
             <div className="mb-8">
               <h2 className="text-2xl font-bold tracking-tight text-[#EDF2F4] mb-2">Instalação e Primeiro Uso</h2>
               <p className="text-sm text-neutral-400">
-                O Hat não possui certificado pago corporativo Apple/Microsoft (app não assinado), por isso o sistema operacional pode exigir uma liberação simples no primeiro início.
+                O Hat é um utilitário nativo não notarizado corporativamente pela Apple/Microsoft (app independente), por isso o sistema operacional pode exigir uma liberação simples no primeiro início.
               </p>
             </div>
 
@@ -314,7 +351,7 @@ export default function App() {
                   <li>Baixe e abra o arquivo <code className="font-mono text-xs bg-neutral-900 px-2 py-0.5 rounded-md">.dmg</code>.</li>
                   <li>Arraste o aplicativo **Hat** para a pasta **Aplicativos**.</li>
                   <li>
-                    Execute o comando abaixo **uma única vez** no Terminal para remover a quarentena do macOS:
+                    Execute o comando abaixo **uma única vez** no Terminal para liberar a execução no macOS:
                   </li>
                 </ol>
 
@@ -345,7 +382,7 @@ export default function App() {
                 <div className="text-xs text-neutral-400 bg-neutral-900/40 p-5 rounded-2xl">
                   <ShieldAlert className="h-4 w-4 text-neutral-400 inline mr-2" />
                   <span>
-                    <strong>Por que este passo é necessário?</strong> Ao baixar um app fora da App Store, o macOS bloqueia a execução até a quarentena ser removida via Terminal.
+                    <strong>Por que este passo é necessário?</strong> Ao baixar um app independente fora da App Store, o macOS exige essa liberação via Terminal na primeira execução.
                   </span>
                 </div>
               </div>
@@ -369,7 +406,7 @@ export default function App() {
             <div className="max-w-xl space-y-6">
               <div>
                 <span className="text-xs font-mono uppercase text-neutral-500 tracking-wider">Plano Único</span>
-                <h2 className="text-3xl font-bold tracking-tight text-[#EDF2F4] mt-1">Acesso Ilimitado</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-[#EDF2F4] mt-1">Acesso Ilimitado à IA no Desktop</h2>
               </div>
 
               <div className="flex items-baseline space-x-2">
@@ -380,15 +417,19 @@ export default function App() {
               <ul className="space-y-2.5 text-sm text-neutral-300 font-light">
                 <li className="flex items-center space-x-2.5">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  <span>Consultas via IA sem limite de uso</span>
+                  <span>Consultas ilimitadas via IA com máxima velocidade</span>
                 </li>
                 <li className="flex items-center space-x-2.5">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  <span>Exibição discreta em pop-up (Flash)</span>
+                  <span>Respostas em janela flutuante instantânea e privada</span>
                 </li>
                 <li className="flex items-center space-x-2.5">
                   <Check className="h-4 w-4 text-emerald-400" />
-                  <span>Suporte a macOS (Apple Silicon & Intel) e Windows</span>
+                  <span>Suporte nativo a macOS (Apple Silicon & Intel) e Windows</span>
+                </li>
+                <li className="flex items-center space-x-2.5">
+                  <Check className="h-4 w-4 text-emerald-400" />
+                  <span>Atualizações contínuas de desempenho inclusas</span>
                 </li>
               </ul>
 
