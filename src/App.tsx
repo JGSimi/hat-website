@@ -145,7 +145,6 @@ export default function App() {
         <nav className="flex items-center space-x-6 text-sm text-neutral-400">
           <a href="#como-funciona" className="hover:text-white transition-colors">Como funciona</a>
           <a href="#instalacao" className="hover:text-white transition-colors">Instalação</a>
-          <a href="#atalhos" className="hover:text-white transition-colors">Atalhos</a>
           <a href="#precos" className="hover:text-white transition-colors">Planos</a>
           <a 
             href={primaryDownload.url}
@@ -374,33 +373,6 @@ export default function App() {
               </div>
             </div>
           )}
-        </section>
-
-        {/* GLOBAL HOTKEYS */}
-        <section id="atalhos" className="py-16 border-b border-neutral-900">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold tracking-tight text-white mb-2">Atalhos Globais</h2>
-            <p className="text-sm text-neutral-400">Comandos acionáveis em qualquer tela, mesmo durante a execução de testes.</p>
-          </div>
-
-          <div className="divide-y divide-neutral-900 border-t border-b border-neutral-900 text-sm font-mono">
-            <div className="py-3.5 flex items-center justify-between">
-              <span className="text-white">Cmd/Ctrl + Shift + F</span>
-              <span className="text-neutral-400 font-sans text-xs">Processar texto da área de transferência e exibir no Flash</span>
-            </div>
-            <div className="py-3.5 flex items-center justify-between">
-              <span className="text-white">Cmd/Ctrl + Shift + D</span>
-              <span className="text-neutral-400 font-sans text-xs">Exibir próxima correção/gabarito apurado da sala</span>
-            </div>
-            <div className="py-3.5 flex items-center justify-between">
-              <span className="text-white">Cmd/Ctrl + Alt + F</span>
-              <span className="text-neutral-400 font-sans text-xs">Reajustar posição e ancoragem do Flash na tela</span>
-            </div>
-            <div className="py-3.5 flex items-center justify-between">
-              <span className="text-white text-rose-400">Cmd/Ctrl + Shift + Q</span>
-              <span className="text-neutral-400 font-sans text-xs">Fechamento de emergência (100% nativo)</span>
-            </div>
-          </div>
         </section>
 
         {/* PRICING */}
